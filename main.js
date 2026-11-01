@@ -1,10 +1,10 @@
 const $=s=>document.querySelector(s);
 
 (function(){
-  const el=$('#typewriter'),text='Happy Birthday',sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  const el=$('#typewriter'),texts=['Happy Birthday','Χρόνια Πολλά'],sleep=ms=>new Promise(r=>setTimeout(r,ms));
   (async function loop(){
     await sleep(1500);
-    for(;;){
+    for(let n=0;;n++){const text=texts[n%texts.length];
       for(let i=1;i<=text.length;i++){el.textContent=text.slice(0,i);await sleep(110+Math.random()*40-20);}
       await sleep(1800);
       for(let i=text.length;i>=0;i--){el.textContent=text.slice(0,i);await sleep(55);}
