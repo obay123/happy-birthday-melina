@@ -1,5 +1,3 @@
-@font-face{font-family:'Gabriela';src:url('Fonts/Gabriela.ttf') format('truetype')}
-@font-face{font-family:'Junkwar';src:url('Fonts/Junkwar-Oblique.otf') format('opentype')}
 :root{--gold:#ffd27a;--rose:#ff7eb6;--cyan:#7fe7ff;--paper:#fff3df;--ink:#3b2a2f;--mx:0;--my:0}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:hidden;width:100%}
@@ -126,3 +124,16 @@ main{max-width:1180px;margin-inline:auto}
 }
 .portrait img.photo{width:92%;margin:0 auto;aspect-ratio:4/5;object-fit:cover;border-radius:999px 999px 24px 24px;border:3px solid rgba(255,230,170,.9);box-shadow:0 0 24px rgba(255,210,122,.8),0 22px 30px rgba(20,0,50,.6);filter:none}
 .portrait:has(img.photo)::after{display:none}
+.polaroid{padding-bottom:12px}
+html{scrollbar-width:none;-ms-overflow-style:none}html::-webkit-scrollbar,body::-webkit-scrollbar{display:none;width:0;height:0}
+body.waiting{overflow:hidden}
+body.waiting .hero,body.waiting .hero *{animation-play-state:paused!important}
+.intro{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:16px;background:radial-gradient(circle at 50% 40%,#3a1f6e,#0b1030 70%);transition:opacity .8s,visibility .8s}
+.intro.gone{opacity:0;visibility:hidden}
+.intro-box{text-align:center;animation:fadeup .9s both}
+.gift{font-size:clamp(4.5rem,22vw,7rem);filter:drop-shadow(0 0 24px rgba(255,126,182,.7));animation:giftbob 2.2s ease-in-out infinite}
+@keyframes giftbob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-12px) rotate(4deg)}}
+.intro-for{margin-top:18px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem;color:#f4dfff}
+.intro-name{font-family:'Cinzel Decorative',serif;font-weight:700;font-size:clamp(2.4rem,11vw,3.6rem);margin:4px 0 28px;color:var(--gold);text-shadow:0 0 18px rgba(255,210,122,.6)}
+.mute{position:fixed;right:16px;bottom:16px;z-index:50;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,230,170,.6);background:rgba(20,10,50,.55);backdrop-filter:blur(6px);font-size:1.2rem;cursor:pointer;box-shadow:0 0 14px rgba(255,210,122,.4)}
+.mute[hidden]{display:none}

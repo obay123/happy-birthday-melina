@@ -4,12 +4,30 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Happy Birthday Melina</title>
+<meta name="description" content="A little birthday surprise for Melina. Χρόνια Πολλά! 🎂">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Happy Birthday Melina 🎂">
+<meta property="og:description" content="A little surprise for you. Χρόνια Πολλά!">
+<meta property="og:url" content="https://obay123.github.io/happy-birthday-melina/">
+<meta property="og:image" content="https://obay123.github.io/happy-birthday-melina/img/melina.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b1030">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Marcellus+SC&family=GFS+Didot&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="Css/style.css">
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 </head>
-<body>
+<body class="waiting">
+<div class="intro" id="intro">
+  <div class="intro-box">
+    <div class="gift" aria-hidden="true">🎁</div>
+    <p class="intro-for">a little surprise for</p>
+    <p class="intro-name">Melina</p>
+    <button class="pill" id="startBtn" type="button">Tap to open</button>
+  </div>
+</div>
+<audio id="bgm" src="music/happy-birthday.mp3" loop preload="auto"></audio>
+<button class="mute" id="muteBtn" type="button" aria-label="Mute music">🔊</button>
 <div class="sky" aria-hidden="true"></div>
 <div class="moon" aria-hidden="true"></div>
 <div class="cloud c1" aria-hidden="true"></div>
@@ -33,10 +51,9 @@
     <div class="letter tilt">
       <span class="heart" aria-hidden="true">❤️</span>
       <h2>Hey, Melina</h2>
-      <p style="--d:.1s">hi, im <strong>obai</strong> 🍂</p>
       <p style="--d:.25s">wishing you a very <mark>happy birthday 🎉</mark></p>
-      <p style="--d:.4s">ive created something special just for you, scroll down and enjoy the surprises! 🍁</p>
-      <p style="--d:.55s">may your day be filled with happiness, laughter, and sweet memories 🌺</p>
+      <p style="--d:.4s">here is something special for you enjoy it 🍁</p>
+      <p style="--d:.55s">Χρόνια πολλά! Να τα εκατοστήσεις, πάντα γερή κι ευτυχισμένη, και να πραγματοποιηθούν όλα σου τα όνειρα 🌺</p>
     </div>
   </section>
 
@@ -49,9 +66,9 @@
   <section class="memories wrap" data-r>
     <h2 class="sec-title">Our old memories</h2>
     <div class="stack" id="stack" aria-label="Photo memories">
-      <figure class="polaroid"><img src="img/m1.jpg" alt="Melina's champion in game" draggable="false"><figcaption>Μελίνννν on the rift 🐱</figcaption></figure>
-      <figure class="polaroid"><img src="img/m2.jpg" alt="ARAM lobby with friends" draggable="false" style="object-position:15% 50%"><figcaption>the magical cat & the squad</figcaption></figure>
-      <figure class="polaroid"><img src="img/m3.jpg" alt="Friends list with Melina" draggable="false" style="object-fit:contain;background:#1d2f86"><figcaption>always in the lobby together</figcaption></figure>
+      <figure class="polaroid"><img src="img/m1.jpg" alt="Melina's champion in game" draggable="false" style="object-fit:contain;background:#cfc9cf"></figure>
+      <figure class="polaroid"><img src="img/m2.jpg" alt="ARAM lobby with friends" draggable="false"></figure>
+      <figure class="polaroid"><img src="img/m3.jpg" alt="Friends list with Melina" draggable="false" style="object-fit:contain;background:#1d2f86"></figure>
     </div>
     <div class="ctrl">
       <button id="prevImg" class="round" aria-label="Previous photo">‹</button>
@@ -80,7 +97,7 @@
 </main>
 
 <footer class="foot" data-r>
-  <p>Thanks for visiting, stay awesome 🪔</p>
+  <p>Thanks for the memories &lt;3</p>
   <small>Created with magical powers by Obai</small>
 </footer>
 <div id="lanterns" aria-hidden="true"></div>

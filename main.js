@@ -1,9 +1,32 @@
 const $=s=>document.querySelector(s);
+let openSite;const opened=new Promise(r=>openSite=r);
+
+(function(){
+  const intro=$('#intro'),audio=$('#bgm'),mute=$('#muteBtn');
+  let fade;
+  function fadeTo(v){
+    clearInterval(fade);
+    let n=0;fade=setInterval(()=>{const d=v-audio.volume;if(Math.abs(d)<.03||++n>40){audio.volume=v;clearInterval(fade);if(!v)audio.pause();}else audio.volume+=d>0?.03:-.03;},60);
+  }
+  $('#startBtn').addEventListener('click',()=>{
+    audio.volume=0;
+    audio.play().then(()=>fadeTo(.6)).catch(()=>mute.hidden=true);
+    intro.classList.add('gone');
+    document.body.classList.remove('waiting');
+    setTimeout(()=>intro.remove(),900);
+    openSite();
+  });
+  audio.addEventListener('error',()=>mute.hidden=true);
+  mute.addEventListener('click',()=>{
+    if(audio.paused){audio.play();fadeTo(.6);mute.textContent='🔊';mute.setAttribute('aria-label','Mute music');}
+    else{fadeTo(0);mute.textContent='🔇';mute.setAttribute('aria-label','Play music');}
+  });
+})();
 
 (function(){
   const el=$('#typewriter'),texts=['Happy Birthday','Χρόνια Πολλά'],sleep=ms=>new Promise(r=>setTimeout(r,ms));
   (async function loop(){
-    await sleep(1500);
+    await opened;await sleep(1500);
     for(let n=0;;n++){const text=texts[n%texts.length];
       for(let i=1;i<=text.length;i++){el.textContent=text.slice(0,i);await sleep(110+Math.random()*40-20);}
       await sleep(1800);
@@ -77,7 +100,7 @@ const $=s=>document.querySelector(s);
 (function(){
   const cols=['#ffd27a','#ff7eb6','#7fe7ff','#ffffff'];
   const boom=()=>{if(typeof confetti==='function')confetti({particleCount:200,spread:120,origin:{y:.17},colors:cols});};
-  if(document.readyState==='complete')boom();else addEventListener('load',boom);
+  opened.then(()=>setTimeout(boom,400));
   const msg=$('#wishMsg'),lines=['wish sent, it will come true ✨','close your eyes and think of it 🌟','the candles are out, make it big 🎂'];
   let k=0;
   $('#wishBtn').addEventListener('click',()=>{
