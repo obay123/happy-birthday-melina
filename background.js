@@ -18,9 +18,10 @@
   let last=0;
   function draw(t){
     x.clearRect(0,0,w,h);
+    const P=window.PX||{x:0,y:0},sx=-P.x*24,sy=-P.y*16;
     for(const s of stars){
       const a=.35+.65*Math.abs(Math.sin(t/1000*s.f+s.s));
-      x.fillStyle=`rgba(255,250,235,${a})`;x.beginPath();x.arc(s.x,s.y,s.r,0,7);x.fill();
+      x.fillStyle=`rgba(255,250,235,${a})`;x.beginPath();x.arc(s.x+sx,s.y+sy,s.r,0,7);x.fill();
     }
     if(t-last>3500+R()*3000){last=t;shots.push({x:R()*w*.8+w*.2,y:R()*h*.3,l:0});}
     shots=shots.filter(s=>s.l<1);
@@ -32,7 +33,7 @@
     for(const p of petals){
       p.y+=p.vy;p.x+=p.vx+Math.sin(t/900+p.f)*.6;p.a+=p.va;p.f+=p.ff;
       if(p.y>h+20||p.x>w+30)Object.assign(p,newPetal(false),{x:R()*w-w*.2});
-      petal(p);
+      x.save();x.translate(-P.x*70,-P.y*40);petal(p);x.restore();
     }
     requestAnimationFrame(draw);
   }

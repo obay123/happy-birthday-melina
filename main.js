@@ -46,8 +46,6 @@ let openSite;const opened=new Promise(r=>openSite=r);
 (function(){
   const root=document.documentElement,tilts=[...document.querySelectorAll('.tilt')],clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
   addEventListener('pointermove',e=>{
-    root.style.setProperty('--mx',clamp(e.clientX/innerWidth-.5,-.5,.5).toFixed(3));
-    root.style.setProperty('--my',clamp(e.clientY/innerHeight-.5,-.5,.5).toFixed(3));
     for(const t of tilts){
       const r=t.getBoundingClientRect();
       if(e.clientY<r.top-80||e.clientY>r.bottom+80||e.clientX<r.left-80||e.clientX>r.right+80){t.style.transform='';continue;}

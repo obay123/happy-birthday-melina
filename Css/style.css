@@ -137,3 +137,19 @@ body.waiting .hero,body.waiting .hero *{animation-play-state:paused!important}
 .intro-name{font-family:'Cinzel Decorative',serif;font-weight:700;font-size:clamp(2.4rem,11vw,3.6rem);margin:4px 0 28px;color:var(--gold);text-shadow:0 0 18px rgba(255,210,122,.6)}
 .mute{position:fixed;right:16px;bottom:16px;z-index:50;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,230,170,.6);background:rgba(20,10,50,.55);backdrop-filter:blur(6px);font-size:1.2rem;cursor:pointer;box-shadow:0 0 14px rgba(255,210,122,.4)}
 .mute[hidden]{display:none}
+/* parallax: each layer moves a different amount */
+.sky{inset:-30px;translate:calc(var(--mx)*-14px) calc(var(--my)*-14px)}
+.moon{transform:translate(calc(var(--mx)*-50px),calc(var(--my)*-34px + var(--sy,0)*-45px))}
+.c1{translate:calc(var(--mx)*-35px) calc(var(--my)*-18px + var(--sy,0)*-30px)}
+.c2{translate:calc(var(--mx)*-65px) calc(var(--my)*-28px + var(--sy,0)*-50px)}
+.hills{left:-70px;right:-70px;bottom:-14px;translate:calc(var(--mx)*-100px) calc(var(--my)*-14px)}
+/* custom cursor */
+html.has-cursor,html.has-cursor *{cursor:none!important}
+.cur-dot,.cur-ring{position:fixed;left:0;top:0;pointer-events:none;z-index:10000;border-radius:50%;transition:opacity .3s}
+.cur-dot{width:8px;height:8px;margin:-4px 0 0 -4px;background:#fff6d6;box-shadow:0 0 10px 3px rgba(255,210,122,.9)}
+.cur-ring{width:36px;height:36px;margin:-18px 0 0 -18px;border:2px solid rgba(255,210,122,.85);box-shadow:0 0 14px rgba(255,126,182,.6),inset 0 0 10px rgba(255,126,182,.35);transition:width .25s,height .25s,margin .25s,background .25s,border-color .25s,opacity .3s}
+.cur-ring.hot{width:58px;height:58px;margin:-29px 0 0 -29px;background:rgba(255,126,182,.15);border-color:#ff9ccc}
+.cur-ring.down{width:26px;height:26px;margin:-13px 0 0 -13px}
+html.cur-out .cur-dot,html.cur-out .cur-ring{opacity:0}
+/* sparkle trail */
+.trail{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9999}
