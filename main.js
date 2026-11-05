@@ -15,6 +15,7 @@ let openSite;const opened=new Promise(r=>openSite=r);
     document.body.classList.remove('waiting');
     setTimeout(()=>intro.remove(),900);
     openSite();
+    window.trackEvent&&trackEvent('opened-gift');
   });
   audio.addEventListener('error',()=>mute.hidden=true);
   mute.addEventListener('click',()=>{
@@ -90,7 +91,7 @@ let openSite;const opened=new Promise(r=>openSite=r);
 })();
 
 (function(){
-  const card=$('#card'),flip=()=>card.classList.toggle('flipped');
+  const card=$('#card'),flip=()=>{if(card.classList.toggle('flipped')&&window.trackEvent)trackEvent('opened-card');};
   $('#toggleButton').addEventListener('click',e=>{e.stopPropagation();flip();});
   $('#cardContainer').addEventListener('click',flip);
 })();
@@ -102,6 +103,7 @@ let openSite;const opened=new Promise(r=>openSite=r);
   const msg=$('#wishMsg'),lines=['wish sent, it will come true ✨','close your eyes and think of it 🌟','the candles are out, make it big 🎂'];
   let k=0;
   $('#wishBtn').addEventListener('click',()=>{
+    window.trackEvent&&trackEvent('made-a-wish');
     msg.textContent=lines[k++%lines.length];msg.classList.remove('pop');void msg.offsetWidth;msg.classList.add('pop');
     if(typeof confetti==='function')[0,1].forEach(s=>confetti({particleCount:90,angle:s?120:60,spread:65,origin:{x:s,y:.75},colors:cols}));
     const box=$('#lanterns');
